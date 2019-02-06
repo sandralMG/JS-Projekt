@@ -1,0 +1,29 @@
+body {
+	background: #f6f6f6;
+}
+
+body,
+label {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 300;
+}
+
+img {
+	display: block;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+.content {
+	background: white;
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 3em;
+}
+
+.logo img {
+	width: 200px;
+}
