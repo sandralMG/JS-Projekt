@@ -1,14 +1,35 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Webbsystem och ramverk: Att göra-lista</title>
-        <meta charset="utf-8" />
-		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="css/todo.css" type="text/css" />
-		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    </head>
-    <body>
+
+<head>
+    <title>Webbsystem och ramverk: Att göra-lista</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/todo.css" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
     <!-- Lägg till gränssnittselement här. -->
-	<script src="js/todoApp.js"></script>
-   </body>
+    <script src="js/todoApp.js"></script>
+
+    <div id="todo-app">
+        <h1>Att göra </h1>
+
+        <input type="text" id="todoInput" placeholder="Fyll i">
+
+        <button> Lägg till</button>
+
+        <ul class="list">
+            <li>Mata katten</li>
+        </ul>
+
+        <button>Spara listan</button>
+
+        <button>Rensa listan</button>
+    </div>
+
+</body>
+
 </html>

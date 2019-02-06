@@ -5,72 +5,106 @@
  * @requires jQuery
  * @version 0.0.1
  */
-var TodoApp = (function () {
-    // Properties
-    var Todo = function (id, description, completeted) {
-        this.id = id;
-        this.description = description;
-        this.completeted = false;
-    };
+$(document).ready(function () {
 
-    var data = [];
+    var TodoApp = (function () {
+        // Properties
+        var Todo = function (id, name, completeted) {
+            this.id = id;
+            this.name = name;
+            this.completeted = completeted;
+        };
 
-    var increment = 0;
+        var data = [];
 
-    var addItem = function (description, completeted) {
 
-        id = increment;
-        //Add item to the list
-        var newItem = new Todo(id, description, completeted);
-
-        // Push it into our data structure
-        data.push(newItem);
-
-        increment++;
-
-        // Return the new element
-        return newItem;
-
-    }
-    var getTodos = function () {
-        return id;
-    }
-
-    var editItem = function (id, description) {
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].id == i) {
-                data[i].description = description;
-            }
+        var createTodo = function () {
+            //send request to create new todo
+            var usrInput = $('#todoInput').val();
+            $.post('/api/todos', {
+                    name: usrInput
+                })
+                .then(function (newTodo) {
+                    $('#todoInput').val('');
+                    addTodo(newTodo);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                })
         }
-    }
 
-    var deleteItem = function (id) {
+        var addTodo = function (todo) {
+            console.log(todo.name);
 
-    }
+            var newTodo = $('<li>' + todo.name + '</li>');
+            console.log(newTodo);
+            newTodo.data('id', todo.id);
+            newTodo.data('name', todo.name);
+            newTodo.data('completed', todo.completed);
+            /*  if (todo.completed) {
+                 newTodo.addClass("done");
+             } */
+            $('.list').append(newTodo);
 
-    return {
-        init: function () {
-            console.log('Application has started.');
-            addItem("dsjfkfjdl", false);
-            console.log(data);
-            addItem("dsjfkfjdl", false);
-            console.log(data);
-            addItem("dsjfkfjdl", false);
-            console.log(data);
-            editItem(2, "bajs");
+        }
 
-            //addItem(1, "köpa glass", false);
-            /*UICtrl.displayMonth();
-            UICtrl.displayBudget({
-                budget: 0,
-                totalInc: 0,
-                totalExp: 0,
-                percentage: -1
+        var addTodos = function (todos) {
+            //add todos to page here
+            todos.forEach(function (todo) {
+                addTodo(todo);
             });
-            setupEventListeners();*/
         }
-    };
 
-})();
 
-TodoApp.init(); // Run application
+        /*   var editItem = function (id, description) {
+              for (var i = 0; i < data.length; i++) {
+                  if (data[i].id == id) {
+                      data[i].description = description;
+                  }
+              }
+          } */
+
+        var deleteItem = function (id) {
+
+        }
+
+        return {
+            init: function () {
+                var newItem = new Todo(3, "bajs", false);
+                addTodo(newItem);
+
+                //addItem(1, "köpa glass", false);
+                /*UICtrl.displayMonth();
+                UICtrl.displayBudget({
+                    budget: 0,
+                    totalInc: 0,
+                    totalExp: 0,
+                    percentage: -1
+                });
+                setupEventListeners();*/
+            }
+        };
+
+    })();
+    TodoApp.init(); // Run application
+
+});
+
+/*
+function addTodos(todos) {
+    //add todos to page here
+    todos.forEach(function(todo){
+      addTodo(todo);
+    });
+  }
+  
+  function addTodo(todo){
+    var newTodo = $('<li class="task">'+todo.name +' <span>X</span></li>');
+    newTodo.data('id', todo._id);
+    newTodo.data('completed', todo.completed);
+    if(todo.completed){
+      newTodo.addClass("done");
+    }
+    $('.list').append(newTodo);
+  }
+  */
