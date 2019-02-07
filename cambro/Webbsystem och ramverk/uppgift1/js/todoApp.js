@@ -15,23 +15,9 @@ $(document).ready(function () {
             this.completeted = completeted;
         };
 
-        var data = [];
+        var todos = [];
 
-
-        var createTodo = function () {
-            //send request to create new todo
-            var usrInput = $('#todoInput').val();
-            $.post('/api/todos', {
-                    name: usrInput
-                })
-                .then(function (newTodo) {
-                    $('#todoInput').val('');
-                    addTodo(newTodo);
-                })
-                .catch(function (err) {
-                    console.log(err);
-                })
-        }
+        var increment = 0;
 
         var addTodo = function (todo) {
             console.log(todo.name);
@@ -45,6 +31,7 @@ $(document).ready(function () {
                  newTodo.addClass("done");
              } */
             $('.list').append(newTodo);
+            todos.push(todo);
 
         }
 
@@ -53,6 +40,28 @@ $(document).ready(function () {
             todos.forEach(function (todo) {
                 addTodo(todo);
             });
+        }
+
+
+
+        var createTodo = function () {
+            //send request to create new todo
+            var userInput = $('#todoInput').val();
+            var newItem = new Todo(increment, userInput, false);
+            addTodo(newItem);
+            increment++;
+
+            /* 
+                        $.post('/api/todos', {
+                                name: usrInput
+                            })
+                            .then(function (newTodo) {
+                                $('#todoInput').val('');
+                                addTodo(newTodo);
+                            })
+                            .catch(function (err) {
+                                console.log(err);
+                            }) */
         }
 
 
@@ -68,11 +77,45 @@ $(document).ready(function () {
 
         }
 
+        var saveTodos = function (todos) {
+            localStorage.setItem("todos", JSON.stringify(todos));
+
+        }
+
+        var initTodos = function () {
+            var storedTodos = JSON.parse(localStorage.getItem("todos"));
+            storedTodos.forEach(function (todo) {
+                addTodo(todo);
+            });
+        }
+
+        var clearTodos = function (todos) {
+            while (todos.length) {
+                todos.pop();
+            }
+        }
+
         return {
             init: function () {
-                var newItem = new Todo(3, "bajs", false);
-                addTodo(newItem);
+                initTodos();
 
+                $('#btnAdd').on('click', function () {
+                    createTodo();
+                    console.log(todos);
+                });
+
+
+                $('#btnSave').on('click', function () {
+                    //addTodos(todos);
+                    saveTodos(todos);
+
+                });
+
+                $('#btnClear').on('click', function () {
+                    //addTodos(todos);
+                    clearTodos(todos);
+
+                });
                 //addItem(1, "köpa glass", false);
                 /*UICtrl.displayMonth();
                 UICtrl.displayBudget({
