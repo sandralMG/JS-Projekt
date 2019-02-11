@@ -6,10 +6,12 @@ body {
     font-weight: 400;
     font-size: 12px;
 }
+
 a,
 a:link {
     outline: none;
 }
+
 h1 {
     font-weight: 100;
     font-size: 72px;
@@ -25,11 +27,13 @@ input[type="text"] {
     font-size: 24px;
     box-sizing: border-box;
 }
+
 :focus {
-  outline-color: transparent;
-  outline-style: none;
+    outline-color: transparent;
+    outline-style: none;
 }
-button {
+
+.btn-large {
     position: relative;
     height: 56px;
     padding: 10px;
@@ -39,16 +43,27 @@ button {
     cursor: pointer;
     outline: none;
     color: white;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
     -webkit-transition: background 0.2s;
     transition: background 0.2s;
 }
-button:hover {
+
+.btn-large:hover {
     background: #FB3D1B;
 }
-button:active {
+
+.btn-large:active {
     top: 2px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-small:hover {
+    background: #FB8E1B;
+}
+
+.btn-small:active {
+    top: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 /* List styles */
@@ -56,6 +71,7 @@ ul {
     margin: 20px 0;
     padding: 0;
 }
+
 ul li {
     list-style-type: none;
     font-size: 24px;
@@ -65,6 +81,7 @@ ul li {
     text-align: left;
     transition: all .3s ease;
 }
+
 ul li a {
     cursor: pointer;
     margin-top: -3px;
@@ -72,8 +89,7 @@ ul li a {
     opacity: 0;
     text-decoration: none;
     color: tomato;
-    -moz-border-radius: 50%
-    -webkit-border-radius: 50%;
+    -moz-border-radius: 50% -webkit-border-radius: 50%;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -83,11 +99,13 @@ ul li a {
     box-sizing: border-box;
     border: 4px solid transparent;
 }
-ul li:hover a{
+
+ul li:hover a {
     opacity: 1.0;
     background: rgba(0, 0, 0, .02);
     cursor: pointer;
 }
+
 ul li a:hover {
     border: 4px solid tomato;
 }
@@ -96,21 +114,23 @@ ul li a:hover {
 
 .done {
     text-decoration: line-through;
-    color: #1bfba1;
-	opacity: 0.5;
+    color: #14B84C;
+    opacity: 0.5;
 }
 
 
 
-li span {
-  float: right;
-  color: #FB3D1B;
-  transition: all 0.3s;
- 
+.btn-small {
+    float: right;
+    margin-right: 3px;
+    border-radius: 4px;
+    color: #FB8E1B;
+    transition: all 0.3s;
+
 }
 
-li span:hover {
-  color: #9c1a03;
+.btn-small:hover {
+    color: #9c1a03;
 }
 
 /* User interface */
@@ -119,13 +139,16 @@ div#todo-app {
     margin: 0 auto;
     padding: 20px;
 }
-input[type="text"]#todo{
+
+input[type="text"]#editInput {
     width: 67%;
     margin-right: 0;
+    background-color: #eee;
+
 }
-button#submit{
+
+button#submit {
     width: 30%;
     display: block;
     float: right;
 }
-
