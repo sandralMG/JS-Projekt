@@ -26,9 +26,7 @@ $(document).ready(function () {
       newTodo.data("id", todo.id);
       newTodo.data("name", todo.name);
       newTodo.data("completed", todo.completed);
-      /*  if (todo.completed) {
-                 newTodo.addClass("done");
-             } */
+
       $(".list").append(newTodo);
       todos.push(todo);
     };
@@ -41,18 +39,14 @@ $(document).ready(function () {
     };
 
     var createTodo = function () {
-      // if (!$("#todoInput").is(":empty")) {
-      console.log("hit");
-      var userInput = $("#todoInput").val();
-      var newItem = new Todo(increment, userInput, false);
-      addTodo(newItem);
-      increment++;
-      /* } else {
-        console.log("miss");
-        $("#todoInput")
-          .attr("placeholder", "Du måste fylla i")
-          .placeholder();
-      } */
+      if ($('#todoInput').val() == '') {
+        $('#todoInput').attr("placeholder", "Du måste fylla i").placeholder();
+      } else {
+        var userInput = $("#todoInput").val();
+        var newItem = new Todo(increment, userInput, false);
+        addTodo(newItem);
+        increment++;
+      }
     };
 
     var completetedTodo = function (todo) {
@@ -95,9 +89,6 @@ $(document).ready(function () {
     };
 
     var editTodo = function (clickedId, userInput) {
-      //TODO
-      // var clickedId = todo.data("id");
-
 
       for (var i = 0; i < todos.length; i++) {
         if (todos[i].id == clickedId) {
@@ -125,12 +116,10 @@ $(document).ready(function () {
         });
 
         $("#btnSave").on("click", function () {
-          //addTodos(todos);
           saveTodos(todos);
         });
 
         $("#btnClear").on("click", function () {
-          //addTodos(todos);
           clearTodos(todos);
           clearUI();
         });
@@ -164,7 +153,6 @@ $(document).ready(function () {
             $(this).html("Redigera");
 
             //Save edited todo in array
-            //editTodo($(this).parent());
             var clickedId = $(this).parent().data("id");
             editTodo(clickedId, userInput);
 

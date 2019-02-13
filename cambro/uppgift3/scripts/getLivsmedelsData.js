@@ -26,21 +26,9 @@ btn.addEventListener('click', function () {
             console.log(error);
         });
 
-    /*   fetch(url)
-        .then(handleErrors)
-        .then(parseJSON)
-        .then(update)
-        .catch(displayErrors);
- */
+
 });
 
-/* function handleErrors(res) {
-    if (!res.ok) {
-        throw Error(res.status);
-    }
-    return res;
-}
-*/
 
 
 function renderResults(data) {
@@ -92,9 +80,3 @@ function renderResults(data) {
     }
 
 }
-/*
-
-function displayErrors(err) {
-    console.log("INSIDE displayErrors!");
-    console.log(err);
-} */

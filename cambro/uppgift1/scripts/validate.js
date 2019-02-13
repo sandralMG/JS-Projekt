@@ -4,27 +4,24 @@ window.onload = function () {
 
     form.onsubmit = validate;
 
-    //DOMstrings
-    var firstName = document.getElementById('field_firstname');
-    console.log(firstName);
-    var lastName = document.getElementById('field_lastname');
-    var email = document.getElementById('field_email');
-    var organisation = document.getElementById('field_organisation');
-    var message = document.getElementById('field_message');
-    var checkedRadio1 = document.getElementById('pres_type_1').checked;
-    var checkedRadio2 = document.getElementById('pres_type_2').checked;
-    var presTitle = document.getElementById('field_pres_title');
-    var isFirstName = false;
-    var isLastName = false;
-    var isEmail = false;
-    var isOrganisation = false;
+
 
 
     function validate() {
 
-
-
-
+        //DOMstrings
+        var firstName = document.getElementById('field_firstname');
+        var lastName = document.getElementById('field_lastname');
+        var email = document.getElementById('field_email');
+        var organisation = document.getElementById('field_organisation');
+        var message = document.getElementById('field_message');
+        var checkedRadio1 = document.getElementById('pres_type_1').checked;
+        var checkedRadio2 = document.getElementById('pres_type_2').checked;
+        var presTitle = document.getElementById('field_pres_title');
+        var isFirstName = false;
+        var isLastName = false;
+        var isEmail = false;
+        var isOrganisation = false;
 
 
         function isEmptyField() {
